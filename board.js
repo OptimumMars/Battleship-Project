@@ -51,7 +51,35 @@ class Board {
         return counter;
     }
 
+    isValid() {
+        if (columnIndex !== "X" || columnIndex !== "*") {
+            return false;
+        }
+        return true;
+    }
 
+    checkGameOver() {
+        if (this.shipsLeft() === 0) {
+            console.log("You Win!!!");
+            return true;
+        }
+        return false;
+    }
+
+    firing (input) {
+        let rowIndex = input[0];
+        let columnIndex = rowIndex[input[1]];
+        if (this.isValid() === true) {
+            if (columnIndex === "S") {
+                columnIndex = "X";
+            } else {
+                columnIndex = "*";
+            }
+        } else {
+            console.log("Not a valid move! >:(")
+        }
+        this.checkGameOver();
+    }
 
 }
 

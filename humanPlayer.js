@@ -8,9 +8,16 @@ class HumanPlayer{
     }
 
     getMove(cb){
-        rl.question("Where do you want to fire?", answer => {
-            cb(answer);
+        rl.question("Enter a row# and a column# EX: 2 3", answer => {
+            cb(convertInput(answer));
         });
+    }
+
+    convertInput(ans) {
+        let ansArray = ans.split(" ");
+        return ansArray.map(ele => {
+            ele = parseInt(ele);
+        })
     }
 }
 
